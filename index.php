@@ -24,7 +24,7 @@ if ($conexDB->connect_error) {
 <body>
     <h1>Lista de estudiantes</h1>
     <?php
-        if($_GET['error_insert']){
+        if(!empty($_GET['error_insert'])){
             echo '<div>Error al guardar los datos!!!</div>';
         }
     ?>
@@ -47,7 +47,7 @@ if ($conexDB->connect_error) {
                 echo '    </p>';
                 echo '    <div>';
                 echo '        <a href="#">Borrar</a>';
-                echo '        <a href="#">Modificar</a>';
+                echo '        <a href="formulario.php?id='.$row['id'].'">Modificar</a>';
                 echo '    </div>';
                 echo '</div>';
             }

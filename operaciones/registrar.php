@@ -26,3 +26,4 @@ if ($result) {
 } else {
     header('Location: ../index.php?error_insert=1');
 }
+$conexDB->close();
