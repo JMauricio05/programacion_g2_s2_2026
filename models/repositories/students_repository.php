@@ -25,4 +25,12 @@ class StudentsRepository implements StudentsRepositoryInterface
         }
         return $students;
     }
+
+    public function save_new_student(Student $student): bool
+    {
+        $sql = "insert into estudiantes(codigo,nombre,email)values";
+        $sql .= "('" . $student->get_code() . "','" . $student->get_name() . "','" . $student->get_email() . "')";
+        $result = $this->students_db->exc_query($sql);
+        return $result;
+    }
 }

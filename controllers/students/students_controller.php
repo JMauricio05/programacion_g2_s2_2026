@@ -3,6 +3,7 @@
 namespace app\controllers\students;
 
 use app\models\repositories\StudentsRepositoryInterface;
+use app\models\entities\Student;
 
 class StudentsController implements StudentsControllerInterface
 {
@@ -18,5 +19,17 @@ class StudentsController implements StudentsControllerInterface
     {
         $list = $this->students_model->get_students_all();
         return $list;
+    }
+
+    public function student_create(array $post_data): bool
+    {
+        $dato_form = new Student(
+            0,
+            $post_data['codigo'],
+            $post_data["nombre"],
+            $post_data["email"]
+        );
+        $student = $this->students_model->save_new_student($dato_form);
+        return !empty($student);
     }
 }

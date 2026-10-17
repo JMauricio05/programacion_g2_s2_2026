@@ -29,7 +29,7 @@ $list = $controller->get_students();
 
 <body>
     <h1>Lista de estudiantes</h1>
-
+    <a href="formulario_estudiantes.php">Registrar estudiantes</a>
     <section class="tarjetas">
         <?php
         foreach ($list as $item) {
