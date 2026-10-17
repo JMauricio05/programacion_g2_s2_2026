@@ -46,7 +46,7 @@ if ($conexDB->connect_error) {
                 echo '        <b>Email: </b><span>'.$row['email'].'</span>';
                 echo '    </p>';
                 echo '    <div>';
-                echo '        <a href="#">Borrar</a>';
+                echo '        <a href="operaciones/borrar.php?id='.$row['id'].'">Borrar</a>';
                 echo '        <a href="formulario.php?id='.$row['id'].'">Modificar</a>';
                 echo '    </div>';
                 echo '</div>';
