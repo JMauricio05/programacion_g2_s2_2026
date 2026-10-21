@@ -2,8 +2,10 @@
 
 namespace app\controllers\students;
 
+use app\controllers\mappers\StudentsControllerMappers;
 use app\models\repositories\StudentsRepositoryInterface;
 use app\models\entities\Student;
+use Exception;
 
 class StudentsController implements StudentsControllerInterface
 {
@@ -23,13 +25,26 @@ class StudentsController implements StudentsControllerInterface
 
     public function student_create(array $post_data): bool
     {
-        $dato_form = new Student(
-            0,
-            $post_data['codigo'],
-            $post_data["nombre"],
-            $post_data["email"]
-        );
+        $dato_form = StudentsControllerMappers::to_entity($post_data);
         $student = $this->students_model->save_new_student($dato_form);
+        return !empty($student);
+    }
+
+    public function get_student(int $id): Student
+    {
+        if(empty($id)){
+            throw new Exception("id incorrecto", 1);
+        }
+        $student = $this->students_model->find_student_by_id($id);
+        if(empty($student)){
+            throw new Exception("Id:$id no existe", 2);
+        }
+        return $student;
+    }
+
+    public function student_update(array $post_data): bool{
+        $datos_form = StudentsControllerMappers::to_entity($post_data);;
+        $student = $this->students_model->save_student($datos_form);
         return !empty($student);
     }
 }

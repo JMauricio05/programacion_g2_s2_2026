@@ -7,6 +7,7 @@ require "../../models/repositories/students_repository_interface.php";
 require "../../models/repositories/students_repository.php";
 require "../../models/config/models_config.php";
 
+require "../../controllers/mappers/students_mappers.php";
 require "../../controllers/students/students_controller_interface.php";
 require "../../controllers/students/students_controller.php";
 require "../../controllers/config/controllers_config.php";

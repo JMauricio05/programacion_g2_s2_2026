@@ -5,6 +5,7 @@ namespace app\models\repositories;
 use app\models\database\StudentsDBInterface;
 use app\models\entities\Student;
 use app\models\mappers\StudentsMappers;
+use Exception;
 
 class StudentsRepository implements StudentsRepositoryInterface
 {
@@ -32,5 +33,25 @@ class StudentsRepository implements StudentsRepositoryInterface
         $sql .= "('" . $student->get_code() . "','" . $student->get_name() . "','" . $student->get_email() . "')";
         $result = $this->students_db->exc_query($sql);
         return $result;
+    }
+
+    public function find_student_by_id(int $id): Student|null
+    {
+        $sql = "select * from estudiantes where id=$id";
+        $rows_db = $this->students_db->exc_select($sql);
+        foreach ($rows_db as $item) {
+            return StudentsMappers::to_entity($item);
+        }
+        return null;
+    }
+
+    public function save_student(Student $student): bool
+    {
+        $sql = "update estudiantes set ";
+        $sql .= " codigo='" . $student->get_code() . "', ";
+        $sql .= " nombre='" . $student->get_name() . "', ";
+        $sql .= " email='" . $student->get_email() . "' ";
+        $sql .= " where id=" . $student->get_id();
+        return $this->students_db->exc_query($sql);
     }
 }

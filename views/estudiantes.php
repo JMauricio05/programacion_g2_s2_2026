@@ -7,6 +7,7 @@ require "../models/repositories/students_repository_interface.php";
 require "../models/repositories/students_repository.php";
 require "../models/config/models_config.php";
 
+require "../controllers/mappers/students_mappers.php";
 require "../controllers/students/students_controller_interface.php";
 require "../controllers/students/students_controller.php";
 require "../controllers/config/controllers_config.php";
@@ -33,6 +34,7 @@ $list = $controller->get_students();
     <section class="tarjetas">
         <?php
         foreach ($list as $item) {
+            $id = $item->get_id();
             echo '<div class="tarjeta">';
             echo '    <p> ';
             echo '        <b>Codigo: </b><span>' . $item->get_code() . '</span> ';
@@ -45,7 +47,7 @@ $list = $controller->get_students();
             echo '    </p>';
             echo '    <div>';
             echo '        <a href="#">Borrar</a>';
-            echo '        <a href="#">Modificar</a>';
+            echo '        <a href="formulario_estudiantes.php?id=' . $id . '">Modificar</a>';
             echo '    </div>';
             echo '</div>';
         }
