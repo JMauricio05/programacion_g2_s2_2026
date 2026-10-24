@@ -1,0 +1,13 @@
+### Microservicio Estudiantes_ms
+
+### Hola munodo
+GET http://127.0.0.1:85/
+
+### sumar
+POST http://127.0.0.1:85/sumar
+Content-Type: application/json
+
+{
+    "numero1": 50, 
+    "numero2": 135
+}
