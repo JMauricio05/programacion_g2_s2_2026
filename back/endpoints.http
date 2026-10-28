@@ -1,13 +1,42 @@
 ### Microservicio Estudiantes_ms
 
 ### Hola munodo
-GET http://127.0.0.1:85/
+GET http://127.0.0.1:8000/
 
 ### sumar
-POST http://127.0.0.1:85/sumar
+POST http://127.0.0.1:8000/sumar
 Content-Type: application/json
 
 {
     "numero1": 50, 
     "numero2": 135
 }
+
+### Consultar todo los estudiantes
+GEt http://127.0.0.1:8000/estudiantes
+
+### Consultar un estudiante
+GEt http://127.0.0.1:8000/estudiantes/25
+
+### registrar un estudiante
+POST http://127.0.0.1:8000/estudiantes
+Content-Type: application/json
+
+{
+    "codigo": "0147",
+    "nombre": "Manuel",
+    "email": "manuel@test.com"
+}
+
+### modificar un estudiante
+PUT http://127.0.0.1:8000/estudiantes/25
+Content-Type: application/json
+
+{
+    "codigo": "007",
+    "nombre": "James Bond",
+    "email": "bond.james.bond@test.com"
+}
+
+### borrar un estudiante
+DELETE http://127.0.0.1:8000/estudiantes/24
