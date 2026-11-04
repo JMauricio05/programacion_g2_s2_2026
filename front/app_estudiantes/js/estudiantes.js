@@ -22,15 +22,15 @@ const mostarDatos = (data) => {
             borrarEstudiante(item.id);
         });
 
-        const td = document.createElement('td');
-        td.appendChild(borrarBtn);
+        const tdBotones = document.createElement('td');
+        tdBotones.appendChild(borrarBtn);
 
         const tr = document.createElement("tr");
         tr.appendChild(tdNo);
         tr.appendChild(tdCod);
         tr.appendChild(tdNombre);
         tr.appendChild(tdEmail);
-        tr.appendChild(td);
+        tr.appendChild(tdBotones);
 
         tbody.appendChild(tr);
     });
