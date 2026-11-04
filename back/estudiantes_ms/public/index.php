@@ -9,7 +9,11 @@ require __DIR__ . '/../app/Base/database.php';
 
 $app = AppFactory::create();
 
-$students_endpoints = require __DIR__.'/../app/Presentation/Routers/endpoints.php';
+$students_endpoints = require __DIR__ . '/../app/Presentation/Routers/endpoints.php';
+
+$cors = require __DIR__ . '/../app/Base/cors.php';
+
+$cors($app);
 
 $app->get('/', function (Request $request, Response $response, $args) {
     $response->getBody()->write("Hello world!");
